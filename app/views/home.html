@@ -1,5 +1,16 @@
 {% extends '_layout.html' %}
 
 {% block content %}
-  <h1>Hello world</h1>
+  <h1>Dapr sender</h1>
+
+  <p>Send message with Dapr bindings to queue and topic</p>
+
+  <form action="/" method="POST">
+    <label for="message">Message body:</label><br>
+    <input type="text" id="message" name="message"><br>
+    <input type="submit" value="Send message">
+  </form>
+
+  <p>{{ message }}</p>
+
 {% endblock %}
