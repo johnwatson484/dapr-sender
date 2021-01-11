@@ -10,3 +10,32 @@ services:
     volumes:
       - ./app/:/home/node/app/
       - ./package.json:/home/node/package.json
+    depends_on:
+      - redis
+      - placement
+
+  dapr-sender-dapr:
+    image: "daprio/daprd:edge"
+    command: ["./daprd",
+     "-app-id", "dapr-sender",
+     "-app-port", "3000",
+     "-placement-host-address", "placement:50006",
+     "-dapr-grpc-port", "50002",
+     "-components-path", "/components"]
+    volumes:
+        - "./dapr/components/:/components"
+    depends_on:
+      - dapr-sender
+    network_mode: "service:dapr-sender"
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6380:6379"
+
+  placement:
+    image: "daprio/dapr"
+    command: ["./placement", "-port", "50006"]
+    ports:
+      - "50006:50006"
+  
