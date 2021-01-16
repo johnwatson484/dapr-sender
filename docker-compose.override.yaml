@@ -6,6 +6,7 @@ services:
       target: development
     environment:
       PORT: 3000
+      AZURE_SERVICE_BUS_CONNECTION_STRING: ${AZURE_SERVICE_BUS_CONNECTION_STRING}
     ports:
       - "3000:3000"
       - "9229:9229"

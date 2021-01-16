@@ -5,8 +5,4 @@ services:
     image: dapr-sender
     container_name: dapr-sender
     environment:
-      AZURE_SERVICE_BUS_HOST: ${AZURE_SERVICE_BUS_HOST}
-      AZURE_SERVICE_BUS_USERNAME: ${AZURE_SERVICE_BUS_USERNAME}
-      AZURE_SERVICE_BUS_PASSWORD: ${AZURE_SERVICE_BUS_PASSWORD}
-      AZURE_SERVICE_BUS_QUEUE: ${AZURE_SERVICE_BUS_QUEUE}
-      AZURE_SERVICE_BUS_TOPIC: ${AZURE_SERVICE_BUS_TOPIC}
+      MESSAGE_TOPIC: http://localhost:3000/v1.0/publish/pubsub/message 
